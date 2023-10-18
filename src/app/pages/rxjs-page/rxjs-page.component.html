@@ -1,0 +1,35 @@
+<p>
+  rxjs-page works!
+</p>
+
+<section class="text">
+  <p>RXJS (Reactive Extensions for JavaScript) is essentially a JS library used to make an app react to asynchronus changes to data either from the user or the server.</p>
+  <p>In RXJS, you define a variable as an observable (by simply adding $ to the end of the variable, eg <span class="codeC2">varName$</span>), meaning as other things that make up that variable change, the variable changes as well. An example:</p>
+  <img src="/assets/Images/rxjs reactive changing.png" alt="" class="img">
+  <br>
+
+<div class="row">
+  <div class="col-md-6">
+    <p>The variables on the UI are defined as observable objects like so: </p><br>
+    <img src="/assets/Images/rxjs observable demonstration.png" style="width: 100%;" alt="" class="img">
+  </div>
+  <div class="col-md-6">
+    <p>Here's the code for each of those variables: </p><br>
+    <img src="/assets/Images/rxjs observables changing with observables then transformed.png" style="width: 100%;" alt="" class="img">
+  </div>
+</div>
+
+<p>Here's the code for each of those variables continued: </p><br>
+<img src="/assets/Images/rxjs basic combining.png" style="width: 100%;" alt="" class="img">
+<br>
+
+<h3>Basic Mapping Syntax</h3>
+<p>You'll find yourself doing mapping syntaxes like this often in RXJS:</p>
+<div class="frame">
+  <code>deliveryFee$ = exPrice$.pipe( <br>
+  &nbsp;&nbsp; map(p => < 30 <span class="blue">?</span> 10 : 0) <span class="comment">//put your logic inside map()</span> <br>
+  );</code>
+</div>
+<p>The above code creates the value of the delivery fee by transforming (using .pipe) the value of exPrice by a logic defined in the map() method. <br>
+The ternary operator inside the map() means that if the response (p) is < 30, show 10, else show 0.</p>
+</section>

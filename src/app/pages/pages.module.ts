@@ -19,6 +19,8 @@ import { CdnPageComponent } from './cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from './complexity-page/complexity-page.component';
 import { StarsComponent } from '../Shared/stars.component';
 import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
+import { RxjsPageComponent } from './rxjs-page/rxjs-page.component';
+import { PracticePageComponent } from './practice-page/practice-page.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { CommonIssuesPageComponent } from './common-issues-page/common-issues-pa
     ComplexityPageComponent,
     StarsComponent,
     CommonIssuesPageComponent,
+    RxjsPageComponent,
+    PracticePageComponent
   ],
   imports: [
     CommonModule,
