@@ -20,7 +20,6 @@ import { ComplexityPageComponent } from './complexity-page/complexity-page.compo
 import { StarsComponent } from '../Shared/stars.component';
 import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
 import { RxjsPageComponent } from './rxjs-page/rxjs-page.component';
-import { PracticePageComponent } from './practice-page/practice-page.component';
 
 
 @NgModule({
@@ -40,7 +39,6 @@ import { PracticePageComponent } from './practice-page/practice-page.component';
     StarsComponent,
     CommonIssuesPageComponent,
     RxjsPageComponent,
-    PracticePageComponent
   ],
   imports: [
     CommonModule,
