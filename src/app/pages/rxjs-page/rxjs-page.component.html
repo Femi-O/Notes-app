@@ -23,6 +23,41 @@
 <img src="/assets/Images/rxjs basic combining.png" style="width: 100%;" alt="" class="img">
 <br>
 
+<h3><u>General Notes</u></h3>
+<p>Some observables emit when there's no subscription, eg event observables. This is a hot observable. Some others need subscription to emit, eg an array. This is a cold observable.</p>
+
+<br>
+
+<h3><u>Common RXJS Terms.</u> </h3>
+<ul>
+  <li><h4>Observer</h4>: a collection of callback fns (often in an object) that can listen for values emitted by the observable. Eg; next(), error(), complete(). <br>
+                       It can also be called a consumer of values an observable emits.<br>
+                       Below is an example of an observer in an object: <br>
+                       <img src="/assets/Images/observer object.png" class="img"> "next" takes in each emitted item and runs what you tell it to. Error takes in the error. The complete takes in nothing.
+  </li>
+  <li><h4>Observable</h4>: a collection of events or values emitted over time. &nbsp; Observables can emit:<br>
+                          <img src="/assets/Images/observables can emit.png" class="img"><br>
+                          You can perform array based, also time based operations on many observables as they often come in array forms and over time.
+  </li>
+  <li><h4>Subscribing</h4>: the event that begins the chain of events. <br>
+                            <img src="/assets/Images/subscribing to start observable sequence.png" class="img"> over here, when you subscribe, the apples$ observable can now emit, and then the methods in const observer can start taking effect. apples$ calls 'next', and runs it, when the next apple is emitted, it calls 'next' again and runs it then calls complete. <br>
+                            <img src="/assets/Images/normal rxjs syntax.png" class="img"> this is the normal way you'll see rxjs written. The observer isn't first defined then called in the subscribe function like the previous image, but is instead just put into the subscribe function directly as shown in the difference between the second and third square code snippets. We can also just pass the next method directly without putting error or complete like is often done in other pages of this app. <br>
+                            ng: complete cancels the subscription.
+  </li>
+  <li><h4>Unsubscribing</h4>: stopping the observable from its emissions. If not some things may continue on forever causing "memory leakage". Eg, <span class="codeC2">sub.unsubscribe()</span> where sub is a const.</li>
+</ul>
+
+<h3><u>Common RXJS Methods.</u> </h3>
+<ul>
+  <li><b>Of vs From</b>: "of" method takes in  an object and returns it as is. From takes an object and returns its constituents one after the other. Of can achieve that same effect using the spread operator.<img src="/assets/Images/of vs from.png" class="img"></li>
+  <li><h4>fromEvent()</h4>: is used to create an observable from a dom action like a click.</li>
+  <li><h4>interval()</h4>: is a method that emits a sequential number after a defined amount of time passes. eg, const num = interval(1000).subscribe(console.log); 1000 being miliseconds.</li>
+  <li><h4>uhn()</h4>: </li>
+</ul>
+
+
+<br>
+
 <h3>Basic Mapping Syntax</h3>
 <p>You'll find yourself doing mapping syntaxes like this often in RXJS:</p>
 <div class="frame">
@@ -32,4 +67,5 @@
 </div>
 <p>The above code creates the value of the delivery fee by transforming (using .pipe) the value of exPrice by a logic defined in the map() method. <br>
 The ternary operator inside the map() means that if the response (p) is < 30, show 10, else show 0.</p>
+
 </section>
