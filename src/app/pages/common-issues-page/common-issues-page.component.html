@@ -99,6 +99,41 @@
       </div>
     </div>
     <hr>
+    <!-- Post Image Issue  -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion5()">
+        <h5>Property 'observableName$' has no initializer and is not definitely assigned in the constructor</h5>
+      </button>
+      <div class="dark" *ngIf="active5 == true">
+        <div class="text">
+            <h5 class="subheading">Issue</h5>: in defining an observable, I got <span class="issue">Property 'products$' has no initializer and is not definitely assigned in the constructor</span>. This may occur when defining an observable.
+            <br>
+            <hr><br>
+            <h5 class="subheading">Solution</h5>:
+            -- Add <span class="solution">| undefined</span> after the observable definition.
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Mapping Issue  -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion6()">
+        <h5>Property 'parameterName' does not exist on type 'IDataInterface[]'</h5>
+      </button>
+      <div class="dark" *ngIf="active6 == true">
+        <div class="text">
+            <h5 class="subheading">Issue</h5>: the data shape of my data was such that I had an array but needed to access data inside the array for each item of my ngFor loop. I was getting an array of type arrayType[] but <span class="issue">I needed to access a parameter inside this array of objects</span> (for data binidng or whatever else). This may occur when your data shape isn't what you expected.
+            <br>
+            <hr><br>
+            <h5 class="subheading">Solution</h5>:
+            -- Instead of item.parameterName, make it <span class="solution">item.map(x => x.parameterName)</span>. This would make the code go into the array, pick the necessary parameter and map them to where you want them to be. It'll do this for everytime that item appears in the objects of the array.
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
 
 
     <button class="collapseBtn" (click)="toggleCollapse()">{{collapsed ? "Close" : "Collapse"}}</button>

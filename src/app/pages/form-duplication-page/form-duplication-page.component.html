@@ -34,10 +34,13 @@
   <div>
     <h3>Notes</h3> <br>
     <p>--the syntax <span class="codeC2">FormGroupName="stuff"</span> is used to address a form group that's nested inside another form group. The master form group is made with the data binding syntax <span class="codeC2">[FormGroup]="nameInTs"</span>. </p>
+    <p>We're essentially making a master formGroup, with a formArray of form groups inside it. Think of it visially this way: <br>
+       <span style="color: rgb(255, 185, 123);">(formGroup <span class="codeC2">(formArray <span style="color:aqua">[formGroup]</span> )</span> )</span></p>
 <p>Steps:</p>
     <ol>
       <li>Make a function to generate the form group. "<span class="codeC2">generateEntryInstance()</span>"</li>
-      <li>Make the relevant formControl to be duplicated a formArray. The array contains the fn to generate the formGroup to be duplicated "<span class="codeC2">this.generateEntryInstance()</span>"</li>
+      <li>Make your master formGroup. That formGroup would have in it a formArray, which would hold the instances generated. <br>
+        -- In other words, in the master formGroup, make the relevant formControl you want to duplicate into a formArray. The array contains the fn to generate the formGroup to be duplicated "<span class="codeC2">this.generateEntryInstance()</span>"</li>
       <li>Define fomArray 'eachStep' as a <span class="codeC2">"get"</span> so that the duplicate fn can identify what to push to.</li>
       <li>A duplicate fn "<span class="codeC2">duplicateFn()</span>" onClick of the duplicate button. The fn pushes an instance of the generation function into the formArray.</li>
       <li>Use ngFor to loop the FormArray to be duplicated. <span class="codeC2">*ngFor="let step of eachStep.controls; let i = index"</span>. Then you wrap what to duplicate in a div with property <code class="codeC2">[formGroupName]="i"</code> so that it'll find the formGroup.</li>
