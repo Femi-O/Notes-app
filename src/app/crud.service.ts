@@ -1,5 +1,5 @@
 import { tap } from 'rxjs/operators';
-import { IComplexData, IData } from './pages/testing-page/data-interface';
+import { IComplexData, IData, IObservableData } from './pages/testing-page/data-interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable,  } from "@angular/core";
 // import observable cuz backend returns assynchronous data
@@ -11,6 +11,7 @@ export class CrudServices {
   // this below link is the link to the back end
   private baseUrl= 'api/data';
   private complexUrl= 'api/complexData';
+  private observableUrl= 'api/observableData';
 
   constructor (private http: HttpClient){ //without "private" http would be localized in the constructor and unavailable to the class
     // this console logs the BackData instantly.
@@ -79,4 +80,11 @@ createComplexItem(savedItem: IComplexData) {
     tap(() => console.log('updateItem: ' + savedItem.id)),
   );
 }
+
+getObservableLists( itemId: number ): Observable<IObservableData> {
+  return this.http.get<IObservableData>(`${this.observableUrl}/${itemId}`).pipe(
+    tap(response => console.log('observableUrl content:', response) )
+    )
+  }
+
 }

@@ -135,6 +135,24 @@
     </div>
     <hr>
 
+    <!-- Subscribe doesn't exist Issue  -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion7()">
+        <h5>Property 'subscribe' does not exist on type 'void'</h5>
+      </button>
+      <div class="dark" *ngIf="active7 == true">
+        <div class="text">
+            <h5 class="subheading">Issue</h5>: I was trying to subscribe and kept getting <span class="issue">Property 'subscribe' does not exist on type 'void'</span> whenever I used .subscribe.
+            <br>
+            <hr><br>
+            <h5 class="subheading">Solution</h5>:
+            -- In the service file, <span class="solution">I added 'return' before this.http</span>. Making it return something. If not, it'd have kept returning void. I also added a type of Observable &lt;any&gt;
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+
 
     <button class="collapseBtn" (click)="toggleCollapse()">{{collapsed ? "Close" : "Collapse"}}</button>
     <div (click)="backToTop()" class="backToTopBtn" style="color: aliceblue;">^</div>

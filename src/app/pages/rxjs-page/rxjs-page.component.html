@@ -3,106 +3,239 @@
 </p>
 
 <section class="text">
-  <p>RXJS (Reactive Extensions for JavaScript) is essentially a JS library used to make an app react to asynchronus changes to data either from the user or the server.</p>
+  <p>RXJS (Reactive Extensions for JavaScript) is essentially a JS library used to make an app react to asynchronus
+    changes to data either from the user or the server.</p>
 
-                  <!-- GENERAL NOTES -->
-<h3><u>General Notes</u></h3>
-<p>Some observables emit when there's no subscription, eg event observables. This is a hot observable. Some others need subscription to emit, eg an array. This is a cold observable.</p>
-<p>The same way in JS there are some array specific methods (.filter, .map etc), In rxjs there are some RXJS specific methods (.map, .tap, .take etc) </p>
-<p>When writing an interface a question mark is used to describe a parameter that may or may not exist in the actual data. e.g <code class="codeC2"> activeStatus?: string, </code></p>
+  <div style="display: inline; background-color: aliceblue; color: black; padding: 5px;">
+    Get Observable Data </div>
+  <input type="number" [value]="this.inputValue"><button (click)="getObservableData()">Run</button><br><br><br>
 
-<br>
+  <!-- GENERAL NOTES -->
+  <div>
+    <button class="accordion" (click)="toggleGeneralNotes()">
+      <h5>General Notes</h5>
+    </button>
+    <div class="dark" *ngIf="activeGeneralNotes == true">
 
-  <p>In RXJS, you define a variable as an observable (by simply adding $ to the end of the variable, eg <span class="codeC2">varName$</span>), meaning as other things that make up that variable change, the variable changes as well. An example:</p>
-  <img src="/assets/Images/rxjs reactive changing.png" alt="" class="img">
+
+      <h3><u>General Notes</u></h3>
+      <p>Some observables emit when there's no subscription, eg event observables. This is a hot observable. Some others
+        need subscription to emit, eg an array. This is a cold observable.</p>
+      <p>The same way in JS there are some array specific methods (.filter, .map etc), In rxjs there are some RXJS
+        specific methods (.map, .tap, .take etc) </p>
+      <p>When writing an interface a question mark is used to describe a parameter that may or may not exist in the
+        actual data. e.g <code class="codeC2"> activeStatus?: string, </code></p>
+
+      <br>
+
+      <p>In RXJS, you define a variable as an observable (by simply adding $ to the end of the variable, eg <span
+          class="codeC2">varName$</span>), meaning as other things that make up that variable change, the variable
+        changes as well. An example:</p>
+      <img src="/assets/Images/rxjs reactive changing.png" alt="" class="img">
+      <br>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p>The variables on the UI are defined as observable objects like so: </p><br>
+          <img src="/assets/Images/rxjs observable demonstration.png" style="width: 100%;" alt="" class="img">
+        </div>
+        <div class="col-md-6">
+          <p>Here's the code for each of those variables: </p><br>
+          <img src="/assets/Images/rxjs observables changing with observables then transformed.png" style="width: 100%;"
+            alt="" class="img">
+        </div>
+      </div>
+
+      <p>Here's the code for each of those variables continued: </p><br>
+      <img src="/assets/Images/rxjs basic combining.png" style="width: 100%;" alt="" class="img"> <br>
+
+      <h1>Here are 3 Ways To React To Changes </h1>
+      <p>Getter. everytime exPrice is needed call the exPrice() fn.</p>
+      <img src="/assets/Images/React to changes 1.png" alt="" class="img"> <br>
+      <p>Event Handler: everytime the quantity is changed, call the fn.</p>
+      <img src="/assets/Images/react via event generation fn.png" alt="" class="img"> <br>
+      <p>New observable stream is declared/made (like the apple emiting machine). <br>
+        Use a fn to make is such that when user changes qty, the observable emits (into qty$) that there's a new qty
+        value. <br>
+        Make another observable, exPrice$ to be a fn that uses the previous observable to run a calculation and arrive
+        at a new value.
+      </p>
+      <img src="/assets/Images/reacting to changes 3.png" alt="" class="img"> <br>
+      <p>Use the observables to populate eachother like so:</p>
+      <img src="/assets/Images/linking observables to populate observables.png" alt="" class="img"> <br>
+      <p>Combine them all to form a complete thing.</p>
+      <img src="/assets/Images/combining it all.png" alt="" class="img"> <br>
+      <br>
+    </div>
+  </div>
+
   <br>
-
-<div class="row">
-  <div class="col-md-6">
-    <p>The variables on the UI are defined as observable objects like so: </p><br>
-    <img src="/assets/Images/rxjs observable demonstration.png" style="width: 100%;" alt="" class="img">
-  </div>
-  <div class="col-md-6">
-    <p>Here's the code for each of those variables: </p><br>
-    <img src="/assets/Images/rxjs observables changing with observables then transformed.png" style="width: 100%;" alt="" class="img">
-  </div>
-</div>
-
-<p>Here's the code for each of those variables continued: </p><br>
-<img src="/assets/Images/rxjs basic combining.png" style="width: 100%;" alt="" class="img">
-<br><br><hr><br><br>
+  <hr><br>
 
 
 
 
-      <!-- rxjs terms  -->
-<h3><u>Common RXJS Terms.</u> </h3>
-<ul>
-  <li><h4>Observer</h4>: a collection of callback fns (often in an object) that can listen for values emitted by the observable. Eg; next(), error(), complete(). <br>
-                       It can also be called a consumer of values an observable emits.<br>
-                       Below is an example of an observer in an object: <br>
-                       <img src="/assets/Images/observer object.png" class="img"> "next" takes in each emitted item and runs what you tell it to. Error takes in the error. The complete takes in nothing.
-  </li>
-  <li><h4>Observable</h4>: a collection of events or values emitted over time. &nbsp; Observables can emit:<br>
-                          <img src="/assets/Images/observables can emit.png" class="img"><br>
-                          You can perform array based, also time based operations on many observables as they often come in array forms and over time.
-  </li>
-  <li><h4>Subscribing</h4>: the event that begins the chain of events. <br>
-                            <img src="/assets/Images/subscribing to start observable sequence.png" class="img"> over here, when you subscribe, the apples$ observable can now emit, and then the methods in const observer can start taking effect. apples$ calls 'next', and runs it, when the next apple is emitted, it calls 'next' again and runs it then calls complete. <br>
-                            <img src="/assets/Images/normal rxjs syntax.png" class="img"> this is the normal way you'll see rxjs written. The observer isn't first defined then called in the subscribe function like the previous image, but is instead just put into the subscribe function directly as shown in the difference between the second and third square code snippets. We can also just pass the next method directly without putting error or complete like is often done in other pages of this app. <br>
-                            ng: complete cancels the subscription.
-  </li>
-  <li><h4>Unsubscribing</h4>: stopping the observable from its emissions. If not some things may continue on forever causing "memory leakage". Eg, <span class="codeC2">sub.unsubscribe()</span> where sub is a const.</li>
-  <li><h4>RXJS operators</h4>: functions used to transform and manipulate emitted items</li>
-  <li><h4>Async pipe</h4>: used to sub to an observable when the component is initialized. When a new item is received, it runs change detection and changes it real time. It also automatically unsubscribes. (test this on service list) <br>
-  <div class="row">
-    <div class="col-6">
-      <img style="width: 100%;" src="/assets/Images/turning regular object to observable.png" class="img">
+  <!-- COMMON RXJS TERMS  -->
+  <div>
+    <button class="accordion" (click)="toggleRxjsTerms()">
+      <h5>Common RXJS Terms</h5>
+    </button>
+    <div class="dark" *ngIf="activeRxjsTerms == true">
+
+
+      <h3><u>Common RXJS Terms.</u> </h3>
+      <ul>
+        <li>
+          <h4>Observer</h4>: a collection of callback fns (often in an object) that can listen for values emitted by the
+          observable. Eg; next(), error(), complete(). <br>
+          It can also be called a consumer of values an observable emits.<br>
+          Below is an example of an observer in an object: <br>
+          <img src="/assets/Images/observer object.png" class="img"> "next" takes in each emitted item and runs what you
+          tell it to. Error takes in the error. The complete takes in nothing.
+        </li>
+        <li>
+          <h4>Observable</h4>: a collection of events or values emitted over time. &nbsp; Observables can emit:<br>
+          <img src="/assets/Images/observables can emit.png" class="img"><br>
+          You can perform array based, also time based operations on many observables as they often come in array forms
+          and
+          over time.
+        </li>
+        <li>
+          <h4>Subscribing</h4>: the event that begins the chain of events. <br>
+          <img src="/assets/Images/subscribing to start observable sequence.png" class="img"> over here, when you
+          subscribe,
+          the apples$ observable can now emit, and then the methods in const observer can start taking effect. apples$
+          calls
+          'next', and runs it, when the next apple is emitted, it calls 'next' again and runs it then calls complete.
+          <br>
+          <img src="/assets/Images/normal rxjs syntax.png" class="img"> this is the normal way you'll see rxjs written.
+          The
+          observer isn't first defined then called in the subscribe function like the previous image, but is instead
+          just
+          put into the subscribe function directly as shown in the difference between the second and third square code
+          snippets. We can also just pass the next method directly without putting error or complete like is often done
+          in
+          other pages of this app. <br>
+          ng: complete cancels the subscription.
+        </li>
+        <li>
+          <h4>Unsubscribing</h4>: stopping the observable from its emissions. If not some things may continue on forever
+          causing "memory leakage". Eg, <span class="codeC2">sub.unsubscribe()</span> where sub is a const.
+        </li>
+        <li>
+          <h4>RXJS operators</h4>: functions used to transform and manipulate emitted items
+        </li>
+        <li>
+          <h4>Async pipe</h4>: used to sub to an observable when the component is initialized. When a new item is
+          received,
+          it runs change detection and changes it real time. It also automatically unsubscribes. (test this on service
+          list)
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <img style="width: 100%;" src="/assets/Images/turning regular object to observable.png" class="img">
+            </div>
+            <div class="col-6">
+              <img style="width: 100%;" src="/assets/Images/turning object to observable with async in template.png"
+                class="img">
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <h4>uhn</h4>: ahn
+        </li>
+      </ul>
+      <br>
     </div>
-    <div class="col-6">
-      <img style="width: 100%;" src="/assets/Images/turning object to observable with async in template.png" class="img">
+  </div>
+
+  <br>
+  <hr><br>
+
+
+
+  <!-- COMMON RXJS METHODS  -->
+  <div>
+    <button class="accordion" (click)="toggleRxjsMethods()">
+      <h5>Common RXJS Methods</h5>
+    </button>
+    <div class="dark" *ngIf="activeRxjsMethods == true">
+      <h3><u>Common RXJS Methods.</u> </h3>
+      <ol>
+        <li><b>Of vs From</b>: "of" method takes in an object and returns it as is. From takes an object and returns its
+          constituents one after the other. Of can achieve that same effect using the spread operator. "Of" automatically
+          completes. <img src="/assets/Images/of vs from.png" class="img"></li>
+        <li>
+          <h4>fromEvent()</h4>: is used to create an observable from a dom action like a click.
+        </li>
+        <li>
+          <h4>interval()</h4>: is a method that emits a sequential number after a defined amount of time passes. eg, const
+          num = interval(1000).subscribe(console.log); 1000 being miliseconds.
+        </li>
+        <li>
+          <h4>pipe()</h4>: one of the fns used to transform data emitted before returning(outputting) it. Piping is done
+          before subscribing. <img src="/assets/Images/piping.png" class="img" alt="">
+        </li>
+        <li>
+          <h4>map()</h4>: use map to make changes to each emmitted item.
+        </li>
+        <li>
+          <h4>tap()</h4>: used to tap into an emmission without affecting the resulting value. Useful for debugging or
+          changing states that don't affect value. Like setting a boolean value to turn off a loading indicator. For
+          debugging, it can be used to log values at different stages of transformation. Tap always emits an observable
+          identical to its input observable.
+        </li>
+        <li>
+          <h4>take()</h4>: emits a specific(defined) number of items. When the required number of items have been processed,
+          the take stops the operation.<img src="/assets/Images/take.png" class="img">
+        </li>
+        <li>
+          <h4>catchError()</h4>: literally catches an error, not allowing it reach the built in error handling of the
+          observer, as errors stop the running of an observable. It prevents the error from running further along the
+          subscription chain. In the image below, since the error has been caught, the 'next' after the subscribe runs and
+          the subscription chain continues, never actually reaching the error handling at the bottom. This kind of code
+          enables your app to continue running if there's an error somewhere. <br>
+          <img src="/assets/Images/catching an error.png" class="img">
+        </li>
+        <li>
+          <h4>throwError()</h4>: throws an error (passes on) along the subscription chain (whatever that means).
+        </li>
+        <li>
+          <h4>uhn()</h4>:
+        </li>
+      </ol>
+
+      <br>
     </div>
-  </div></li>
-
-  <li><h4>uhn</h4>: ahn</li>
-</ul>
-<br><br><hr><br><br>
+  </div>
 
 
+  <br>
+  <hr><br>
 
-      <!-- common rxjs methods  -->
-<h3><u>Common RXJS Methods.</u> </h3>
-<ol>
-  <li><b>Of vs From</b>: "of" method takes in  an object and returns it as is. From takes an object and returns its constituents one after the other. Of can achieve that same effect using the spread operator. "Of" automatically completes. <img src="/assets/Images/of vs from.png" class="img"></li>
-  <li><h4>fromEvent()</h4>: is used to create an observable from a dom action like a click.</li>
-  <li><h4>interval()</h4>: is a method that emits a sequential number after a defined amount of time passes. eg, const num = interval(1000).subscribe(console.log); 1000 being miliseconds.</li>
-  <li><h4>pipe()</h4>: one of the fns used to transform data emitted before returning(outputting) it. Piping is done before subscribing.  <img src="/assets/Images/piping.png" class="img" alt=""></li>
-  <li><h4>map()</h4>: use map to make changes to each emmitted item.</li>
-  <li><h4>tap()</h4>: used to tap into an emmission without affecting the resulting value. Useful for debugging or changing states that don't affect value. Like setting a boolean value to turn off a loading indicator. For debugging, it can be used to log values at different stages of transformation. Tap always emits an observable identical to its input observable.</li>
-  <li><h4>take()</h4>: emits a specific(defined) number of items. When the required number of items have been processed, the take stops the operation.<img src="/assets/Images/take.png" class="img"> </li>
-  <li><h4>catchError()</h4>: literally catches an error, not allowing it reach the built in error handling of the observer, as errors stop the running of an observable. It prevents the error from running further along the subscription chain. In the image below, since the error has been caught, the 'next' after the subscribe runs and the subscription chain continues, never actually reaching the error handling at the bottom. This kind of code enables your app to continue running if there's an error somewhere. <br>
-  <img src="/assets/Images/catching an error.png" class="img"></li>
-  <li><h4>throwError()</h4>: throws an error (passes on) along the subscription chain (whatever that means).</li>
-  <li><h4>uhn()</h4>: </li>
-</ol>
+  <h3>Basic Mapping Syntax</h3>
+  <p>You'll find yourself doing mapping syntaxes like this often in RXJS:</p>
+  <div class="frame">
+    <code>deliveryFee$ = exPrice$.pipe( <br>
+      &nbsp;&nbsp; map(p => < 30 <span class="blue">?</span> 10 : 0) <span class="comment">//put your logic inside
+          map()</span> <br>
+        );</code>
+  </div>
+  <p>The above code creates the value of the delivery fee by transforming (using .pipe) the value of exPrice by a logic
+    defined in the map() method. <br>
+    The ternary operator inside the map() means that if the response (p) is < 30, show 10, else show 0.</p> <br><br>
+      <hr><br><br>
 
-<br><br><hr><br><br>
-
-<h3>Basic Mapping Syntax</h3>
-<p>You'll find yourself doing mapping syntaxes like this often in RXJS:</p>
-<div class="frame">
-  <code>deliveryFee$ = exPrice$.pipe( <br>
-  &nbsp;&nbsp; map(p => < 30 <span class="blue">?</span> 10 : 0) <span class="comment">//put your logic inside map()</span> <br>
-  );</code>
-</div>
-<p>The above code creates the value of the delivery fee by transforming (using .pipe) the value of exPrice by a logic defined in the map() method. <br>
-The ternary operator inside the map() means that if the response (p) is < 30, show 10, else show 0.</p>
-
-<br><br><hr><br><br>
-<h2>References:</h2>
-For more rxjs operators, check the <a class="codeC2" href="https://rxjs.dev/api">RXJS documentation</a> .<br>
-To <a class="codeC2" href="https://rxjs.dev/operator-decision-tree">find which method achieves your desired outcome</a> check the "decision tree" part of the documentation.
+      <!-- REFERENCES -->
+  <h2>References:</h2>
+  <ul>
+    <li>For more rxjs operators, check the <a class="codeC2" href="https://rxjs.dev/api">RXJS documentation</a></li>
+    <li>To <a class="codeC2" href="https://rxjs.dev/operator-decision-tree">find which method achieves your desired outcome</a> check the "decision tree" part of the documentation.</li>
+    <li>For examples of RXJS methods in use see <a class="codeC2" href="https://app.pluralsight.com/ilx/video-courses/c3d1cf6f-addf-4f27-8ce4-f90e9814d2cd/79832f94-b0f9-4939-949f-5e29f9d30278/ccc7b721-02ab-40b5-ad53-24b6237e02b3">Module 4 of RxJS In Angular: Reactive Development. </a></li>
+  </ul>
 
 
-<div (click)="backToTop()" class="backToTopBtn">^</div>
+
+      <div (click)="backToTop()" class="backToTopBtn">^</div>
 </section>

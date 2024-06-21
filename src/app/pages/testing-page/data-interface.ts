@@ -15,3 +15,13 @@ export interface IComplexData {
   rating: number;
   tags: [];
 }
+export interface IObservableData {
+  id: number;
+  serialNo: number;
+  title: string;
+  type: string;
+  description: string;
+  rating: number;
+  status: boolean;
+  tags: [];
+}
