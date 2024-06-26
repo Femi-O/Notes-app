@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudServices } from 'src/app/crud.service';
 import { IComplexData, IData } from '../testing-page/data-interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-complexity-page',
@@ -13,6 +14,7 @@ export class ComplexityPageComponent implements OnInit {
 
   warrantForm: FormGroup;
   listData: IComplexData[] = [];
+  listData$: Observable<IComplexData[]>;
   item: IComplexData;
   filteredData: IComplexData[] = [];
   complextDataForm: FormGroup;
@@ -85,6 +87,7 @@ export class ComplexityPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listData$ = this.service.getComplexData();
     //this ngOnInit defined the form model
 
 
