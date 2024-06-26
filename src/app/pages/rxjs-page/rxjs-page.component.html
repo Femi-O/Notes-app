@@ -8,7 +8,9 @@
 
   <div style="display: inline; background-color: aliceblue; color: black; padding: 5px;">
     Get Observable Data </div>
-  <input type="number" [value]="this.inputValue"><button (click)="getObservableData()">Run</button><br><br><br>
+  <input type="number" [value]="this.inputValue"><button (click)="getObservableData()">Run</button>
+  <div *ngIf="observableObject$ | async as item">uhn {{item}}</div>
+  <br><br><br>
 
   <!-- GENERAL NOTES -->
   <div>
@@ -66,6 +68,17 @@
       <p>Combine them all to form a complete thing.</p>
       <img src="/assets/Images/combining it all.png" alt="" class="img"> <br>
       <br>
+      <div>
+        <h1>Changing From Subscription To Observable</h1>
+        <ol>
+          <li>Change the object to an observable. E.g <code  class="codeC2">object: IData</code> becomes <code  class="codeC2">object$: Observable&lt;IData&gt;</code> </li>
+          <li>Put the resulting observable from your service get fn into object$ at ngOninit (or wherever is relevant).</li>
+          <li>In html, change object to object$ | async as object. (async auto subscribes & unsubscribes, object acts as a variable items are assigned to)</li>
+          <li>Do your for loop or any other relevant UI implementation. </li>
+        </ol>
+        <img src="/assets/Images/async pipe in html.png" alt=""  class="img">
+        <p>Note: an observable CANNOT be initialized. Eg, <code  class="codeC2">object$: Observable&lt;IData&gt; = []</code></p>
+      </div>
     </div>
   </div>
 

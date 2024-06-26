@@ -52,7 +52,7 @@
 
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="listData">
 
           <tr *ngFor="let data of filteredData; let i = index">
             <th>{{i + 1}}</th>

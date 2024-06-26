@@ -1,4 +1,4 @@
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { IComplexData, IData, IObservableData } from './pages/testing-page/data-interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable,  } from "@angular/core";
@@ -81,10 +81,17 @@ createComplexItem(savedItem: IComplexData) {
   );
 }
 
-getObservableLists( itemId: number ): Observable<IObservableData> {
-  return this.http.get<IObservableData>(`${this.observableUrl}/${itemId}`).pipe(
-    tap(response => console.log('observableUrl content:', response) )
-    )
+getObservableLists( itemId: number ): Observable<IObservableData[]> {
+  return this.http.get<IObservableData[]>(`${this.baseUrl}/${itemId}`).pipe(
+    tap(response => {
+      console.log('observable object:', response);
+      return response; // Extract data from response
+    }),
+    catchError(error => {
+      console.error('Error getting observable data:', error);
+      return [];
+    })
+  )
   }
 
 }
