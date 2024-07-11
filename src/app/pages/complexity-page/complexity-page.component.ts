@@ -14,7 +14,7 @@ export class ComplexityPageComponent implements OnInit {
 
   warrantForm: FormGroup;
   listData: IComplexData[] = [];
-  listData$: Observable<IComplexData[]>;
+  listData$: Observable<IComplexData[]> = this.service.getComplexData();
   item: IComplexData;
   filteredData: IComplexData[] = [];
   complextDataForm: FormGroup;
@@ -87,14 +87,13 @@ export class ComplexityPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listData$ = this.service.getComplexData();
     //this ngOnInit defined the form model
 
 
     //reseting the form
     this.resetForm();
     // Getting the List Data
-    this.getComplexData();
+    // this.getComplexData();
 
     //for create modal
     this.complextDataForm = this.fb.group({

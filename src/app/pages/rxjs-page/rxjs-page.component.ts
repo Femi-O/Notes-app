@@ -12,7 +12,7 @@ import { IObservableData } from '../testing-page/data-interface';
 export class RxjsPageComponent implements OnInit {
   items = ['item1', 'item2', 'item3', 'item4', 'item5']
   numbers = [1, 2, 3, 4, 5]
-  observableObject$: Observable<IObservableData[]>;
+  observableObject$: Observable<IObservableData>;
   inputValue: number;
   activeGeneralNotes: any = true;
   activeRxjsTerms: any;
@@ -24,7 +24,6 @@ export class RxjsPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getObservableData();
     of(2, 4, 6, 8).subscribe(
       (res) => console.log(res)
       );
@@ -76,7 +75,8 @@ export class RxjsPageComponent implements OnInit {
 
 
   getObservableData(): void {
-    //I THINK THIS DIDN'T WORK BECAUSE NO ASYNC PIPE SUBSCRIBED TO IT.
+    console.log(this.inputValue)
+    //I THINK THIS DIDN'T WORK BECAUSE INPUTVALUE ISN'T WELL CAPTURED.
     this.observableObject$ = this.service.getObservableLists(this.inputValue);
   }
 

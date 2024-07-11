@@ -81,8 +81,8 @@ createComplexItem(savedItem: IComplexData) {
   );
 }
 
-getObservableLists( itemId: number ): Observable<IObservableData[]> {
-  return this.http.get<IObservableData[]>(`${this.baseUrl}/${itemId}`).pipe(
+getObservableLists( itemId: number ): Observable<IObservableData> {
+  return this.http.get<IObservableData>(`${this.observableUrl}/${itemId}`).pipe(
     tap(response => {
       console.log('observable object:', response);
       return response; // Extract data from response
