@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 // but really how to get the data is to call the get method, which brings "const data", sub to the observable, then do whatever I want with "const data" now that I have it
 import { BackData } from 'src/app/BackData'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-testing-page',
@@ -18,6 +19,7 @@ export class TestingPageComponent implements OnInit {
 
   warrantForm: FormGroup;
   listData: IData[] = [];
+  testObservableListData$: Observable<IData[]> = this.service.getData();   //this.service.getData() returns an observable of IData so it can enter this variable that's defined as observable IData.
   item: IData;
   filteredData: IData[] = [];
 
@@ -88,10 +90,16 @@ export class TestingPageComponent implements OnInit {
         this.filteredData = this.listData},}
       );
       ;
+
+      this.testObservableListData$.subscribe(
+        (res) => {console.log("observable test", res)}
+      );
     }
 //Testing Clicking a Button By Code
   ngAfterViewInit(){
     this.Test.nativeElement.click();
+    console.log(this.testObservableListData$)
+
   }
   testFn(){
     alert('test clicked')
@@ -111,7 +119,7 @@ export class TestingPageComponent implements OnInit {
 
   onDeleteComplete(): void {
     alert('Deleted!')
-    this.ngOnInit();
+    // this.ngOnInit();
   }
 
     object: IData[];

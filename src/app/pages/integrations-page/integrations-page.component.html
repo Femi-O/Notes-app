@@ -206,24 +206,24 @@
   <h4>CRUD Service File Syntax</h4>
   <div class="frame">
     <code>
-      <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http'; <br>
-        import {{ '{' }} Observable, of, throwError } from 'rxjs'; <br>
-        import {{ '{' }} catchError, tap, map } from 'rxjs/operators'; <br>
+      <p>import {{ '{' }} HttpClient, HttpHeaders {{'}'}} from '&#64;angular/common/http'; <br>
+        import {{ '{' }} Observable, of, throwError {{'}'}} from 'rxjs'; <br>
+        import {{ '{' }} catchError, tap, map {{'}'}} from 'rxjs/operators'; <br>
         <br>&nbsp;<br>
-        @Injectable ({{ '{' }} <br>
+        &#64;Injectable ({{ '{' }} <br>
         &nbsp;&nbsp; providedIn: 'root' <br>
-        }) <br>
+        {{'}'}}) <br>
         <br>&nbsp;<br>
         export class ProductService {{ '{' }} <br>
         &nbsp;&nbsp; private baseUrl = 'www.myWebService.com/api/products'; <br>
         <br>
-        &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}} <br>
+        &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}{{'}'}} <br>
         <br>
         &nbsp;&nbsp; getProduct(id:number): Observable&lt;Product&gt; {{ '{' }} <br>
-        &nbsp;&nbsp; &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl}/${{ '{' }}id}`; <br>
+        &nbsp;&nbsp; &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl{{'}'}}/${{ '{' }}id{{'}'}}`; <br>
         &nbsp;&nbsp; &nbsp;&nbsp;return this.http.get&lt;Product&gt;(url); <br>
-        }
-        }
+        {{'}'}}
+        {{'}'}}
       </p>
     </code>
   </div>
@@ -242,10 +242,10 @@
           implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
         <li>Create an interface file to define the data types for strong typing and import it here too</li>
         <li>Use the createDb method to create the object holding the array of data.<br>
-          <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
+          <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] {{'}'}}{{ '{' }} <br>
               &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
-              &nbsp;&nbsp;return {{ '{' }} data }; <br>
-              } </code> </div>
+              &nbsp;&nbsp;return {{ '{' }} data {{'}'}}; <br>
+              {{'}'}} </code> </div>
         </li>
       </ul>
     </li>
@@ -295,7 +295,7 @@
       using object.parameter in the html, but to display it in a form, you pass the res into a display items function
       (<i>which is inside a getItemForEditingById function</i>). This getItemForEditingById function is called in
       ngOnInit in the function for reading the route id from the top bar.</p>
-    <p>When trying to interact with a html element by code (using @viewChild), if nativeElement is not working, try putting it in ngAfterViewInit and that should make it work.</p>
+    <p>When trying to interact with a html element by code (using &#64;viewChild), if nativeElement is not working, try putting it in ngAfterViewInit and that should make it work.</p>
   </div>
   <br>
 
@@ -629,7 +629,7 @@
       <li>Bind its title to a "rating" object and its width to a "cropwith" object in the ts file.</li>
       <li>Import it to the declarations of the module that'll be using it.</li>
       <li>Use it as a custom html directive. E.g <code class="codeC2">&lt;app-stars&gt;&lt;/app-stars&gt;</code></li>
-      <li>Whatever parts of the star component.ts you want to be properties of the custom html, add the <code class="codeC2">@Input()</code>  decorator behing the definition of that property, like a prefix.</li>
+      <li>Whatever parts of the star component.ts you want to be properties of the custom html, add the <code class="codeC2">&#64;Input()</code>  decorator behing the definition of that property, like a prefix.</li>
       <li>In the html file where the stars are being called as a directive, use property binding to bind the properties of the custom html to their corresponding fields coming from the back end. E.g, <code class="codeC2">&lt;app-stars [rating]="item.rating"&gt;&lt;/app-stars&gt;</code></li>
     </ul>
   </div>
@@ -655,6 +655,16 @@
     2. It takes away a lot of revisiting (<i>a step forward today and a step back tomorrow, running in circles</i>) by finalizing product designs with process team, so frontend guys just code out the finished product instead of coding and trying to complete the actual product with the process team simultaneously.
     <b>Extra:</b> <br> With a UIUX product design, you can hire 10 different freelancers/staff, at different times, to work on different parts of the design on both frontend and backend (<i>especially frontend</i>) and still end up with a finished and consistent final product.
   </div> <br>
+
+  <h1>Changing A Favicon</h1>
+  <p>Here are the steps to change the favicon of an Angular app.</p>
+  <ol>
+    <li>go to src/favicon.ico and replace it with your own favicon. </li>
+    <li>go to index.html and put your favicon's rel link in the "link" tag's href.</li>
+    <li>go to angular.json and replace Favicon.ico's link with your own favicon's rel link</li>
+    <li><b>Troubleshooting</b>: If it doesn't work, try tweaking your links like removing "src", removing the first / etc. Also try restart project </li>
+  </ol>
+  <br>
 
   <h1>Notes to Remember</h1>
   <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use
