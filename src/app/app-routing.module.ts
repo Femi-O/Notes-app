@@ -15,6 +15,7 @@ import { ComplexityPageComponent } from 'src/app/pages/complexity-page/complexit
 import { CommonIssuesPageComponent } from './pages/common-issues-page/common-issues-page.component';
 import { RxjsPageComponent } from './pages/rxjs-page/rxjs-page.component';
 import { ExercisesComponent } from './pages/exercises/exercises.component';
+import { OtherNotesComponent } from './pages/other-notes/other-notes.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'pages/common-issues-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CommonIssuesPageComponent },
   { path: 'pages/rxjs-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: RxjsPageComponent },
   { path: 'pages/exercise-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ExercisesComponent },
-  { path: 'pages/glad-notes', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ExercisesComponent },
+  { path: 'pages/glad-notes', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: OtherNotesComponent },
 ];
 
 @NgModule({

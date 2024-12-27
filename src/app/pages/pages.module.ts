@@ -21,6 +21,7 @@ import { StarsComponent } from '../Shared/stars.component';
 import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
 import { RxjsPageComponent } from './rxjs-page/rxjs-page.component';
 import { ExercisesComponent } from './exercises/exercises.component';
+import { OtherNotesComponent } from './other-notes/other-notes.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ExercisesComponent } from './exercises/exercises.component';
     CommonIssuesPageComponent,
     RxjsPageComponent,
     ExercisesComponent,
+    OtherNotesComponent,
   ],
   imports: [
     CommonModule,
