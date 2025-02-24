@@ -16,6 +16,8 @@ export class CommonIssuesPageComponent implements OnInit {
   active6: boolean = false;
   active7: boolean = false;
   active8: boolean = false;
+  active9: boolean = false;
+  active10: boolean = false;
 
   constructor() {
     this.findActiveProperties(this); //"this" in the bracket refers to "this component class"
@@ -78,6 +80,12 @@ export class CommonIssuesPageComponent implements OnInit {
   }
   toggleAccordion8(): void {
     this.active8 = !this.active8;
+  }
+  toggleAccordion9(): void {
+    this.active9 = !this.active9;
+  }
+  toggleAccordion10(): void {
+    this.active10 = !this.active10;
   }
 
 

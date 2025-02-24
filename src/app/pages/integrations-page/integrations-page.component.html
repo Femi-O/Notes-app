@@ -679,6 +679,33 @@
   </ol>
   <br>
 
+  <h1>Making a Request Interceptor</h1>
+  <p>Here are the steps to make a request interceptor.</p>
+  <ol>
+    <li>Generate the request and error interceptors. <code class="codeC2">ng generate interceptor shared/error</code></li>
+    <li>
+      Include them in <code class="codeC2">providers: []</code> of app module. <br>
+      <img src="/assets/Images/interceptor providers.png" class="img" alt="">
+    </li>
+    <li>
+      Put your intercept code. Remember to add all imports you use. <br>
+      <div class="frame">
+        <code>
+          &nbsp;@Injectable() <br>
+          &nbsp;export class RequestInterceptor implements HttpInterceptor {{'{'}}  <br>
+          &nbsp;&nbsp;intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {{'{'}} <br>
+          &nbsp;&nbsp;&nbsp;<span class="comment">//your logic here</span>  <br><br>
+          &nbsp;&nbsp;&nbsp;<span class="comment">//outputs the modified http request</span>  <br>
+          &nbsp;&nbsp;&nbsp;return next.handle(request); <br>
+          &nbsp;&nbsp;{{'}'}}<br>
+          &nbsp;{{'}'}} <br> <br>
+
+        </code>
+      </div>
+    </li>
+    <li>Whenever you run a http request, it goes through this interceptor and its logic. This is where you can do whatever you want to the request before it's made, like add a token.</li>
+  </ol>
+
   <h1>Notes to Remember</h1>
   <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use
     data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>

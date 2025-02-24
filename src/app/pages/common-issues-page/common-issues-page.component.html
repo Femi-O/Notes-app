@@ -153,24 +153,65 @@
     </div>
     <hr>
 
-        <!-- Can't bind to 'formGroup' since it isn't a known property of 'div'  -->
-        <div>
-          <button class="accordion" (click)="toggleAccordion8()">
-            <h5>Can't bind to 'formGroup' since it isn't a known property of 'div'</h5>
-          </button>
-          <div class="dark" *ngIf="active8 == true">
-            <div class="text">
-                <h5 class="subheading">Issue</h5>: I was trying to bind a form group to the html but it said <span class="issue">Can't bind to 'formGroup' since it isn't a known property of 'div'</span>.
-                <br>
-                <hr><br>
-                <h5 class="subheading">Solution</h5>:<br>
-                  -- In the relevant module file, <span class="solution">add an import of ReactiveFormsModule, and FormsModule</span>. <br>
-                  -- In another instance of the same error, if the component involved is a standalone component, adding the import of ReactiveFormsModule, and FormsModule in the relevant module won't work. You have to <span class="solution">go to the ts file and under @Component add imports:[ FormsModule, ReactiveFormsModule ]</span>.
-            </div>
+    <!-- Can't bind to 'formGroup' since it isn't a known property of 'div'  -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion8()">
+        <h5>Can't bind to 'formGroup' since it isn't a known property of 'div'</h5>
+      </button>
+      <div class="dark" *ngIf="active8 == true">
+        <div class="text">
+            <h5 class="subheading">Issue</h5>: I was trying to bind a form group to the html but it said <span class="issue">Can't bind to 'formGroup' since it isn't a known property of 'div'</span>.
             <br>
-          </div>
+            <hr><br>
+            <h5 class="subheading">Solution</h5>:<br>
+              -- In the relevant module file, <span class="solution">add an import of ReactiveFormsModule, and FormsModule</span>. <br>
+              -- In another instance of the same error, if the component involved is a standalone component, adding the import of ReactiveFormsModule, and FormsModule in the relevant module won't work. You have to <span class="solution">go to the ts file and under @Component add imports:[ FormsModule, ReactiveFormsModule ]</span>.
         </div>
-        <hr>
+        <br>
+      </div>
+    </div>
+    <hr>
+
+      <!-- Unexpected token '??='  -->
+      <div>
+        <button class="accordion" (click)="toggleAccordion9()">
+          <h5>Unexpected token '??='</h5>
+        </button>
+        <div class="dark" *ngIf="active9 == true">
+          <div class="text">
+              <h5 class="subheading">Issue</h5>: I was trying to run an app but it threw <span class="issue">Unexpected token '??='</span>.
+              <img src="/assets/Images/node wrong version error.png" alt="">
+              <br>
+              <hr><br>
+              <h5 class="subheading">Solution</h5>:<br>
+                -- Your node version is wrong, <span class="solution">update node</span>. <br>
+          </div>
+          <br>
+        </div>
+      </div>
+      <hr>
+
+
+
+      <!--Typescript: Type 'string | undefined' is not assignable to type 'string'  -->
+      <div>
+        <button class="accordion" (click)="toggleAccordion10()">
+          <h5>Typescript: Type 'string | undefined' is not assignable to type 'string'</h5>
+        </button>
+        <div class="dark" *ngIf="active10 == true">
+          <div class="text">
+              <h5 class="subheading">Issue</h5>: I noticed some part of my code from Keycloak, userProfile.firstName underlined and it threw <span class="issue">Typescript: Type 'string | undefined' is not assignable to type 'string'</span>.
+              <img src="" alt="">
+              <br>
+              <hr><br>
+              <h5 class="subheading">Solution</h5>:<br>
+                -- The property was made optional in Keycloak's internal node module code, so <span class="solution">add the non-null assertion operator, which is just an exclamation (like so userProfile.firstName!)</span>. It tells TypeScript that even though something looks like it could be null, it can trust you that it's not. <br>
+          </div>
+          <br>
+        </div>
+      </div>
+      <hr>
+
 
 
     <button class="collapseBtn" (click)="toggleCollapse()">{{collapsed ? "Close" : "Collapse"}}</button>
