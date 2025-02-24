@@ -693,6 +693,7 @@
         <code>
           &nbsp;@Injectable() <br>
           &nbsp;export class RequestInterceptor implements HttpInterceptor {{'{'}}  <br>
+          &nbsp;&nbsp;&nbsp;<span class="comment">//The intercept() method takes in your HTTP request and outputs/returns the edited HTTP request.</span> <br>
           &nbsp;&nbsp;intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {{'{'}} <br>
           &nbsp;&nbsp;&nbsp;<span class="comment">//your logic here</span>  <br><br>
           &nbsp;&nbsp;&nbsp;<span class="comment">//outputs the modified http request</span>  <br>
@@ -700,10 +701,10 @@
           &nbsp;&nbsp;{{'}'}}<br>
           &nbsp;{{'}'}} <br> <br>
 
-        </code>
+        </code> <br>
       </div>
     </li>
-    <li>Whenever you run a http request, it goes through this interceptor and its logic. This is where you can do whatever you want to the request before it's made, like add a token.</li>
+    <li>Whenever you run a http request, it goes through this interceptor and its logic. This is where you can do whatever you want to the request before it's made, like adding a token to the request before it's sent out.</li>
   </ol>
 
   <h1>Notes to Remember</h1>
