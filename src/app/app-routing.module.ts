@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'pages/common-issues-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CommonIssuesPageComponent },
   { path: 'pages/rxjs-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: RxjsPageComponent },
   { path: 'pages/exercise-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ExercisesComponent },
-  { path: 'pages/glad-notes', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: OtherNotesComponent },
+  { path: 'pages/more-notes', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: OtherNotesComponent },
 ];
 
 @NgModule({

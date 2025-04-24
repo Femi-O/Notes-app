@@ -1,7 +1,23 @@
 <p>other-notes works!</p>
 <section class="text">
-  Gladys' notes on stuff she's learned as she's been going!
   <div class="dark">
-    Here are Glady's main notes with the black background.
+   <H3>How to animate a modal with CSS</H3>
+   <div>
+    <ol>
+      <li>Make your div to display with ngIf.</li>
+      <li>Make a backdrop div to emulate the shadow that comes under a modal, tied to the same ngIf. </li>
+      <li>A function to toggle the display of the modal and its backdrop between "true" and "false". </li>
+      <li>Call the toggle function on click of the backdrop and anywhere else that dismisses the modal.  </li>
+      <li>For the animation of the modal add the following css to the modal: <code class="codeC2">transition: transform 0.3s ease-in-out; &nbsp; transform: translateY(100%); </code>  </li>
+      <li>Add the following css to the modal's open state: <code class="codeC2">transform: translateY(0);</code>  </li>
+      <li>Ensure the HTML tag is properly given the necessary css class and ngClass (to control state of class when opened and closed)  </li>
+    </ol>
+    Find below the code snippet for the css: <br>
+    <img class="img" src="/assets/Images/css modal animation.png" alt=""> <br>
+    For the HTML: <br>
+    <img class="" src="/assets/Images/modal animation html.png" alt=""> <br>
+    In the ts <br>
+    <img class="" src="/assets/Images/animating a modal ts.png" alt=""> <br>
+   </div>
   </div>
 </section>

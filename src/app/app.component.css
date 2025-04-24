@@ -105,3 +105,12 @@ body{
 .green2{
   color: rgb(0, 157, 157);
 }
+
+img{
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+}
+.img{
+  width: 60%;
+  height: 400px;
+}
