@@ -20,4 +20,26 @@
     <img class="" src="/assets/Images/animating a modal ts.png" alt=""> <br>
    </div>
   </div>
+
+  <br><hr><br>
+
+  <div class="dark">
+    <h3>Steps To Make Token Refresh Without Logging The User Out.</h3>
+
+    In the request interceptor (meaning for every http request) I handled the event of error 401 to ensure that if a
+    request is ever made and it gives a 401 (meaning un-authenticated) then a function runs and
+    <ol>
+      <li>Refreshes the token automatically</li>
+      <li>Gets a new token</li>
+      <li>Emits an instance of the new token</li>
+      <li>Adds the new token to the request</li>
+    </ol>
+    5. If this process fails, it logs out.<br>
+    That way, the user never gets logged out of the app. <br><br>
+    Below is the code snippet for the interceptor: <br>
+    <img class="img" src="/assets/Images/token refresh interceptor.png" alt=""><br>
+    Below is the handle401 function that the interceptor is using. <br>
+    <img class="img" src="/assets/Images/handle 401.png" alt="">
+  </div>
+
 </section>
